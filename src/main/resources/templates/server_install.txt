@@ -1,0 +1,46 @@
+//cmd to upload to main production server
+sudo scp -i aspire_production_2.pem  /home/shaikmohammed/aspireworkspace/DecisionEngine/target/DecisionEngine-0.0.1-SNAPSHOT.jar  ubuntu@ec2-65-1-56-87.ap-south-1.compute.amazonaws.com:/home/ubuntu/aspireproduction
+
+// cmd to upload to temp server with production db connectivity
+
+sudo scp -i aspire_production_1.pem  /home/shaikmohammed/aspireworkspace/DecisionEngine/target/DecisionEngine-0.0.1-SNAPSHOT.jar  ubuntu@ec2-13-126-97-63.ap-south-1.compute.amazonaws.com:/home/ubuntu/aspireproduction
+
+// cmd to upload to dev  server with production db connectivity
+
+sudo scp -i aspire-dev.pem  /home/shaikmohammed/aspireworkspace/DecisionEngine/target/DecisionEngine-0.0.1-SNAPSHOT.jar  ubuntu@ec2-15-206-52-110.ap-south-1.compute.amazonaws.com:/home/ubuntu/aspiredummy
+
+	
+//cmd to upload to main production server
+
+sudo scp -i aspire_production_2.pem  /home/shaikmohammed/aspireworkspace/aspirewebapp/target/aspirewebapp.jar  ubuntu@ec2-65-1-56-87.ap-south-1.compute.amazonaws.com:/home/ubuntu/aspireproduction
+
+// cmd to upload to temp server with production db connectivity
+
+sudo scp -i aspire_production_1.pem  /home/shaikmohammed/aspireworkspace/aspirewebapp/target/aspirewebapp.jar  ubuntu@ec2-13-126-97-63.ap-south-1.compute.amazonaws.com:/home/ubuntu/aspireproduction
+
+// cmd to upload to dev  server with production db connectivity
+
+sudo scp -i aspire-dev.pem  /home/shaikmohammed/aspireworkspace/aspirewebapp/target/aspirewebapp.jar  ubuntu@ec2-15-206-52-110.ap-south-1.compute.amazonaws.com:/home/ubuntu/aspiredummy
+
+
+#############################################################################################
+step 1: Login to relevent server
+//temp
+alias prod_machine='ssh -i "aspire_production_1.pem" ubuntu@ec2-13-126-97-63.ap-south-1.compute.amazonaws.com'
+//prod
+alias prod_new='ssh -i "aspire_production_2.pem" ubuntu@ec2-65-1-56-87.ap-south-1.compute.amazonaws.com'
+//dev
+alias dev_machine='ssh -i "aspire-dev.pem" ubuntu@ec2-15-206-52-110.ap-south-1.compute.amazonaws.com'
+
+//to stop
+
+step 2 : sudo supervisorctl stop all
+
+//
+
+step 3 : remove old jar and upload new jar using scp cmd
+
+// apply excecute permission and then run the below cmd
+
+ sudo supervisorctl start all
+
